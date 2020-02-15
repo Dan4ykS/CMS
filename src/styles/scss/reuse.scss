@@ -1,0 +1,8 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.flexWrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

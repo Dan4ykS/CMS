@@ -39,7 +39,7 @@ const updateShopingCart = (state, action) => {
   if (state === undefined) {
     return {
       cartItems: [],
-      totalPrice: null,
+      totalPrice: 0,
     };
   }
 

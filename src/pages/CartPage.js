@@ -6,7 +6,7 @@ import withBookstoreService from '../hoc/withBookstoreService';
 import componentLogic from '../hoc/componentLogic';
 
 const CartPage = ({ totalPrice }) => {
-  const price = totalPrice !== null ? <div className='totalPricc'>Сумма вашего заказа: {totalPrice}</div> : null;
+  const price = totalPrice !== 0 ? <div className='totalPricc'>Сумма вашего заказа: {totalPrice}</div> : null;
   return (
     <>
       <h2>Ваш список товаров</h2>

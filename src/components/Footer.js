@@ -21,7 +21,7 @@ const Footer = () => {
           <i className='fab fa-vk'></i>
         </div>
         <div className='helperIcon helperIcon3'>
-          <i className='fab fa-facebook'>2</i>
+          <i className='fab fa-facebook'></i>
         </div>
       </div>
     </footer>

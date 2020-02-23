@@ -1,42 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { headerFixMenu, createItems } from '../utils/helpFuncs';
 import '../styles/scss/Header.scss';
 
-const HederBlock = ({ items }) => {
-  const allItems = items.map((elem) => {
-    const { name, value } = elem;
-    return (
-      <li className='header__item' key={name}>
-        <Link key={name} to={name}>
-          {value}
-        </Link>
-      </li>
-    );
-  });
-
+const HederBlock = ({ mainItems: itemsMain, topItems: itemsTop, iconsForItems }) => {
+  headerFixMenu()
+  const mainItems = createItems(itemsMain, 'header__item header__main_item');
+  const topItems = createItems(itemsTop, 'header__item header__top_item', iconsForItems);
   return (
     <div className='header'>
       <nav>
-        <div className='header__left'></div>
         <div className='header__top'>
-          <ul className='flexWrap'>{allItems}</ul>
+          <div className='container'>
+            <ul className='flexWrap'>{topItems}</ul>
+          </div>
         </div>
-        <div className='header__right'></div>
+        <div className='header__main'>
+          <div className='container'>
+            <ul className='flexWrap'>{mainItems}</ul>
+          </div>
+        </div>
       </nav>
     </div>
   );
 };
 
 HederBlock.defaultProps = {
-  items: [
+  mainItems: [
     { name: '/MainPage/', value: 'Главная' },
     { name: '/Bascket/', value: 'Корзина' },
   ],
 };
 
 HederBlock.propTypes = {
-  items: PropTypes.array.isRequired,
+  mainItems: PropTypes.array.isRequired,
 };
 
 export default HederBlock;

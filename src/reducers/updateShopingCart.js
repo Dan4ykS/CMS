@@ -53,6 +53,7 @@ const updateShopingCart = (state, action) => {
   }
 };
 
+
 export default updateShopingCart;
 
 // Добавить поддержку загрузки данных из корзины (подумать над реализацией синхронизации товаров в state и с сервера)

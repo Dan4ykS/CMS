@@ -7,18 +7,12 @@ import HederBlock from '../components/Header';
 import MainPage from '../pages/MainPage';
 import CustomizingPage from '../pages/CustomizingPage';
 import Footer from '../components/Footer';
+import { mainItems, topItems, iconsForItems } from '../utils/headerConf';
 
 const App = () => {
-  const items = [
-    { name: '/', value: 'Главная' },
-    { name: '/ProductPage/', value: 'Продукция' },
-    { name: '/CartPage/', value: 'Корзина' },
-    { name: '/CustomizingPage/', value: 'Фичи' },
-  ];
-
   return (
     <>
-      <HederBlock items={items} />
+      <HederBlock iconsForItems={iconsForItems} topItems={topItems} mainItems={mainItems} />
       <div className='container content'>
         <Switch>
           <Route path='/' component={MainPage} exact />

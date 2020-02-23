@@ -1,4 +1,6 @@
 import { fetchBooks, onAddedToCart, onDeletedFromCart } from '../actions/actions';
+import { Link } from 'react-router-dom';
+import React from 'react'
 
 const compose = (...funcs) => (comp) => {
   return funcs.reduceRight((wrapped, func) => func(wrapped), comp);
@@ -38,15 +40,74 @@ const feedbackMouseEnter = () => {
 const showScrollTopArrow = () => {
   window.addEventListener('scroll', () => {
     if (window.pageYOffset > 500) {
-      document.querySelectorAll('.fas').forEach((el) => {
+      document.querySelectorAll('footer .fas').forEach((el) => {
         el.classList.add('fas_active');
       });
     } else {
-      document.querySelectorAll('.fas').forEach((el) => {
+      document.querySelectorAll('footer .fas').forEach((el) => {
         el.classList.remove('fas_active');
       });
     }
   });
 };
 
-export { mapStateToProps, compose, mapDispatchToProps, feedbackMouseLeave, feedbackMouseEnter, showScrollTopArrow };
+const headerFixMenu = () => {
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 50) {
+      document.querySelector('.header__main').classList.add('active');
+    } else {
+      document.querySelector('.header__main').classList.remove('active');
+    }
+  });
+};
+const createElementWithIcon = (icon, item, className) => {
+  const { className: icoclassName, link } = icon;
+  const { name, value } = item;
+  return (
+    <div className='flexWrap' key={Math.random()}>
+      <Link key={Math.random()} to={name}>
+        <i className={icoclassName} key={Math.random()}></i>
+      </Link>
+
+      <li className={className} key={Math.random()}>
+        <Link key={Math.random()} to={name}>
+          {value}
+        </Link>
+      </li>
+    </div>
+  );
+};
+
+const createElementWithOutIcon = (item, className) => {
+  const { name, value } = item;
+  return (
+    <li className={className} key={name}>
+      <Link key={name} to={name}>
+        {value}
+      </Link>
+    </li>
+  );
+};
+
+const createItems = (items, className, iconsForItems = []) => {
+  return items.map((elem, index) => {
+    const item = iconsForItems.length === 0 ? createElementWithOutIcon(elem, className) : createElementWithIcon(iconsForItems[index], elem, className);
+    return <React.Fragment key={Math.random()}>{item}</React.Fragment>;
+  });
+};
+
+const redirectToSocial = (link) => { 
+  window.open(link)
+}
+
+export {
+  mapStateToProps,
+  compose,
+  mapDispatchToProps,
+  feedbackMouseLeave,
+  feedbackMouseEnter,
+  showScrollTopArrow,
+  headerFixMenu,
+  createItems,
+  redirectToSocial
+};

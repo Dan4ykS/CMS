@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 
-from UserList.api import UserList
+from UserList.api import GetUsers, CreateUser, AuthUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/get_user_list/$', UserList.as_view(), name='user_list')
+    url(r'^api/get_user_list/$', GetUsers.as_view(), name='user_list'),
+    url(r'^api/create_new_user/$', CreateUser.as_view(), name='user_list'),
+    url(r'^api/auth_user/$', AuthUser.as_view(), name='user_list')
 ]

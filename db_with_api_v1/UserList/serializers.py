@@ -7,3 +7,10 @@ class UsersSerializer(serializers.ModelSerializer):
         model = Users
         fields = '__all__'
 
+
+class UserAuthSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Users
+        fields = ('userName', 'password') 
+

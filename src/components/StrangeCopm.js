@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/scss/StrangeComp.scss';
+// import '../styles/scss/StrangeComp.scss';
 
 const StrangeComp = () => {
   return (

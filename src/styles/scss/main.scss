@@ -7,6 +7,9 @@
   img {
     pointer-events: none;
   }
+  input {
+    cursor: text;
+  }
 }
 
 body {
@@ -26,5 +29,5 @@ h6 {
   background-color: #ffffffad;
   padding: 20px;
   padding-top: 0;
-  height: 2000px;
+  min-height: 100vh;
 }

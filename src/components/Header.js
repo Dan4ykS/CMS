@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { headerFixMenu, createItems } from '../utils/helpFuncs';
 import '../styles/scss/Header.scss';
 
-const HederBlock = ({ mainItems: itemsMain, topItems: itemsTop, iconsForItems }) => {
-  headerFixMenu()
+const Heder = ({ mainItems: itemsMain, topItems: itemsTop, iconsForItems }) => {
+  headerFixMenu();
   const mainItems = createItems(itemsMain, 'header__item header__main_item');
   const topItems = createItems(itemsTop, 'header__item header__top_item', iconsForItems);
   return (
@@ -25,15 +25,15 @@ const HederBlock = ({ mainItems: itemsMain, topItems: itemsTop, iconsForItems })
   );
 };
 
-HederBlock.defaultProps = {
+Heder.defaultProps = {
   mainItems: [
     { name: '/MainPage/', value: 'Главная' },
     { name: '/Bascket/', value: 'Корзина' },
   ],
 };
 
-HederBlock.propTypes = {
+Heder.propTypes = {
   mainItems: PropTypes.array.isRequired,
 };
 
-export default HederBlock;
+export default Heder;

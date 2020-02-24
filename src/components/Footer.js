@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/scss/Footer.scss';
 import { Link } from 'react-scroll';
-import { feedbackMouseEnter, feedbackMouseLeave, showScrollTopArrow, redirectToSocial } from '../utils/helpFuncs';
+import { feedbackMouseEnter, feedbackMouseLeave, showScrollTopArrow, redirectToLink } from '../utils/helpFuncs';
 
 const Footer = () => {
   showScrollTopArrow();
@@ -15,13 +15,13 @@ const Footer = () => {
           <i className='fas fa-phone'></i>
         </div>
         <div className='helperIcon helperIcon1'>
-          <i onClick={() => redirectToSocial('https://www.instagram.com/dan4yk_/?hl=ru')} className='fab fa-instagram'></i>
+          <i onClick={() => redirectToLink('https://www.instagram.com/dan4yk_/?hl=ru')} className='fab fa-instagram'></i>
         </div>
         <div className='helperIcon helperIcon2'>
-          <i onClick={() => redirectToSocial('https://vk.com/dan2801')} className='fab fa-vk'></i>
+          <i onClick={() => redirectToLink('https://vk.com/dan2801')} className='fab fa-vk'></i>
         </div>
         <div className='helperIcon helperIcon3'>
-          <i onClick={() => redirectToSocial('https://www.facebook.com/profile.php?id=100007511921453')} className='fab fa-facebook'></i>
+          <i onClick={() => redirectToLink('https://www.facebook.com/profile.php?id=100007511921453')} className='fab fa-facebook'></i>
         </div>
       </div>
     </footer>

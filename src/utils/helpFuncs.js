@@ -1,6 +1,7 @@
 import { fetchBooks, onAddedToCart, onDeletedFromCart } from '../actions/actions';
 import { Link } from 'react-router-dom';
-import React from 'react'
+import { Link as LinkToTop } from 'react-scroll';
+import React from 'react';
 
 const compose = (...funcs) => (comp) => {
   return funcs.reduceRight((wrapped, func) => func(wrapped), comp);
@@ -54,25 +55,24 @@ const showScrollTopArrow = () => {
 const headerFixMenu = () => {
   window.addEventListener('scroll', () => {
     if (window.pageYOffset > 50) {
-      document.querySelector('.header__main').classList.add('active');
+      document.querySelector('.header__main').classList.add('header_active');
     } else {
-      document.querySelector('.header__main').classList.remove('active');
+      document.querySelector('.header__main').classList.remove('header_active');
     }
   });
 };
 const createElementWithIcon = (icon, item, className) => {
-  const { className: icoclassName, link } = icon;
+  const { className: icoclassName } = icon;
   const { name, value } = item;
   return (
     <div className='flexWrap' key={Math.random()}>
       <Link key={Math.random()} to={name}>
         <i className={icoclassName} key={Math.random()}></i>
       </Link>
-
       <li className={className} key={Math.random()}>
-        <Link key={Math.random()} to={name}>
-          {value}
-        </Link>
+          <Link key={Math.random()} to={name}>
+            {value}
+          </Link>
       </li>
     </div>
   );
@@ -82,9 +82,11 @@ const createElementWithOutIcon = (item, className) => {
   const { name, value } = item;
   return (
     <li className={className} key={name}>
-      <Link key={name} to={name}>
-        {value}
-      </Link>
+      {/* <LinkToTop to='header' smooth={true}> */}
+        <Link key={name} to={name}>
+          {value}
+        </Link>
+      {/* </LinkToTop> */}
     </li>
   );
 };
@@ -96,18 +98,8 @@ const createItems = (items, className, iconsForItems = []) => {
   });
 };
 
-const redirectToSocial = (link) => { 
-  window.open(link)
-}
-
-export {
-  mapStateToProps,
-  compose,
-  mapDispatchToProps,
-  feedbackMouseLeave,
-  feedbackMouseEnter,
-  showScrollTopArrow,
-  headerFixMenu,
-  createItems,
-  redirectToSocial
+const redirectToLink = (link) => {
+  window.open(link);
 };
+
+export { mapStateToProps, compose, mapDispatchToProps, feedbackMouseLeave, feedbackMouseEnter, showScrollTopArrow, headerFixMenu, createItems, redirectToLink };

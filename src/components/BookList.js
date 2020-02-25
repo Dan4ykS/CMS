@@ -1,15 +1,11 @@
 import React from 'react';
 import componentLogic from '../hoc/componentLogic';
 import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps, compose } from '../utils/helpFuncs';
-import withBookstoreService from '../hoc/withBookstoreService';
+import { mapStateToProps, mapDispatchToProps, compose } from '../utils/helpFuncsForRedux';
+import withServices from '../hoc/withServices';
 import '../styles/scss/BlockList.scss';
 
-const BookList = ({ books, onAddedToCart }) => {
-  const handlerClick = (id) => {
-    onAddedToCart(id)
-    console.log('работает')
-   }
+const BookList = ({ bookList: { books }, actions: { onAddedToCart } }) => {
   return (
     <div className='row'>
       {books.map((book) => {
@@ -25,7 +21,7 @@ const BookList = ({ books, onAddedToCart }) => {
                 <div className='buy'>
                   <span>{book.price}</span> Рублей
                 </div>
-                <button onClick={() => handlerClick(book.id)}>В корзину</button>
+                <button onClick={() => onAddedToCart(book.id)}>В корзину</button>
               </div>
             </div>
           </div>
@@ -35,7 +31,4 @@ const BookList = ({ books, onAddedToCart }) => {
   );
 };
 
-export default compose(
-  withBookstoreService(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(componentLogic(BookList, 'bookList'));
+export default compose(withServices(), connect(mapStateToProps, mapDispatchToProps))(componentLogic(BookList, 'bookList'));

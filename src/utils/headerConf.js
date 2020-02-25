@@ -7,6 +7,7 @@ const mainItems = [
 const topItems = [
   { name: '/Login', value: 'Вход' },
   { name: '/Cart/', value: 'Корзина' },
+  
 ];
 
 const iconsForItems = [

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { headerFixMenu, createItems } from '../utils/helpFuncs';
+import { createItems } from '../utils/helpFuncsForCreateReactElem';
+import { headerFixMenu } from '../utils/helpFuncsForBrouser'
 import '../styles/scss/Header.scss';
 
 const Heder = ({ mainItems: itemsMain, topItems: itemsTop, iconsForItems }) => {

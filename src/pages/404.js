@@ -1,25 +1,19 @@
 import React from 'react';
+import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-export default class Page404 extends React.Component {
-  state = {
-    redirect: false,
-  };
+const Page404 = () => {
+  const [redirect, setRedirect] = useState(false);
 
-  redirectToMainPage() {
-    this.setState({ redirect: !this.state.redirect });
+  if (redirect) {
+    return <Redirect to='/' />;
   }
+  return (
+    <>
+      <h1>Ошибка, страница не найдена</h1>
+      <button onClick={() => setRedirect(true)}>На главную </button>
+    </>
+  );
+};
 
-  render() {
-    const { redirect } = this.state;
-    if (redirect) {
-      return <Redirect to='/' />;
-    }
-    return (
-      <>
-        <h1>Ошибка, страница не найдена</h1>
-        <button onClick={() => this.redirectToMainPage()}>На главную </button>
-      </>
-    );
-  }
-}
+export default Page404;

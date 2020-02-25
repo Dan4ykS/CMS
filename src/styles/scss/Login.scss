@@ -2,4 +2,10 @@
 
 .authorization{
   margin-top: 20px;
+  .btn-group{
+    padding: 0;
+    .btn{
+      padding: 3px;
+    }
+  }
 }

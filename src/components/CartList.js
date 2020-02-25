@@ -1,12 +1,12 @@
 import React from 'react';
-import { compose, mapStateToProps, mapDispatchToProps } from '../utils/helpFuncs';
+import { compose, mapStateToProps, mapDispatchToProps } from '../utils/helpFuncsForRedux';
 import { connect } from 'react-redux';
-import withBookstoreService from '../hoc/withBookstoreService';
+import withServices from '../hoc/withServices';
 import componentLogic from '../hoc/componentLogic';
 import ChangeCopies from './ChangeCopies';
 import '../styles/scss/CartList.scss';
 
-const CartList = ({ cartItems, onAddedToCart, onDeletedFromCart}) => {
+const CartList = ({ shopingCart: { cartItems }, actions: { onAddedToCart, onDeletedFromCart } }) => {
   if (cartItems.length === 0) {
     return <p>Вы пока не выбрали ни одного товара</p>;
   }
@@ -30,7 +30,4 @@ const CartList = ({ cartItems, onAddedToCart, onDeletedFromCart}) => {
   );
 };
 
-export default compose(
-  withBookstoreService(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(componentLogic(CartList, 'cartList'));
+export default compose(withServices(), connect(mapStateToProps, mapDispatchToProps))(componentLogic(CartList, 'cartList'));

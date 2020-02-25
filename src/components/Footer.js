@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/scss/Footer.scss';
 import { Link } from 'react-scroll';
-import { feedbackMouseEnter, feedbackMouseLeave, showScrollTopArrow, redirectToLink } from '../utils/helpFuncs';
+import { feedbackMouseEnter, feedbackMouseLeave, showScrollTopArrow, redirectToLink } from '../utils/helpFuncsForBrouser';
 
 const Footer = () => {
   showScrollTopArrow();

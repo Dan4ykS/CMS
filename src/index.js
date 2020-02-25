@@ -3,20 +3,24 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import './styles/scss/main.scss';
 import BookstoreService from './services/BookstoreService';
+import UsersService from './services/UsersService'
 import { Provider } from 'react-redux';
 import store from './store';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { BookstoreServiceProvider } from './components/BookStoreContext';
+import { ServicesProvider } from './components/Context';
 
-const bookstoreService = new BookstoreService();
+const services = {
+  bookstoreService: new BookstoreService(),
+  usersService: new UsersService(),
+};
 
 ReactDOM.render(
   <Provider store={store}>
-    <BookstoreServiceProvider value={bookstoreService}>
+    <ServicesProvider value={services}>
       <Router>
         <App />
       </Router>
-    </BookstoreServiceProvider>
+    </ServicesProvider>
   </Provider>,
   document.getElementById('reduxApp')
 );

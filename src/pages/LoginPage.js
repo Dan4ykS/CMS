@@ -1,38 +1,23 @@
 import React from 'react';
-import StrangeComp from '../components/StrangeCopm'
+import { Redirect } from 'react-router-dom';
+import { compose, mapStateToProps, mapDispatchToProps } from '../utils/helpFuncsForRedux';
+import { connect } from 'react-redux';
+import withServices from '../hoc/withServices';
+import componentLogic from '../hoc/componentLogic';
+import { workWithUserApi } from '../utils/helpFuncsForBrouser';
+import { Link } from 'react-router-dom';
 import '../styles/scss/Login.scss';
 
-const checkUser = (e) => {
-  e.preventDefault();
-  let data = {};
-  document.querySelectorAll('.authorization .form-control').forEach((el) => {
-    data[el.name] = el.value;
-  });
-  console.log(data);
-  fetch('http://127.0.0.1:8000/api/auth_user/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-    },
-    body: JSON.stringify(data),
-  })
-    .then((data) => { 
-      if (!data.ok) {
-        throw new Error('Такого пользователя нет!')
-      } else { 
-        console.log('Такой пользователь существует !')
-      }
-    })
-    .catch((err) => console.log(err));
-};
-
-const LoginPage = () => {
+const LoginPage = ({ userData: { isAuth }, actions: { authorization } }) => {
+  if (isAuth) {
+    return <Redirect to='/' />;
+  }
   return (
     <>
       <h2>Страница авторизации</h2>
       <div className='row'>
         <div className='authorization col-lg-6'>
-          <form onSubmit={(e) => checkUser(e)}>
+          <form onSubmit={(e) => workWithUserApi(e, authorization, '.authorization')}>
             <div className='form-group row'>
               <label className='col-sm-2 col-form-label'>Логин:</label>
               <div className='col-sm-10'>
@@ -45,12 +30,13 @@ const LoginPage = () => {
                 <input name='password' type='password' className='form-control' placeholder='Введите ваш пароль'></input>
               </div>
             </div>
-            <div className='form-group row'>
-              <div className='col-12 text-right'>
-                <button type='submit' className='btn btn-primary'>
-                  Войти
-                </button>
-              </div>
+            <div className='btn-group col-8 offset-4' role='group'>
+              <button type='submit' className='btn btn-primary'>
+                Войти
+              </button>
+              <Link to='/Registration/' className='btn btn-primary'>
+                Зарегистрироваться
+              </Link>
             </div>
           </form>
         </div>
@@ -60,4 +46,7 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default compose(
+  withServices(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(componentLogic(LoginPage));

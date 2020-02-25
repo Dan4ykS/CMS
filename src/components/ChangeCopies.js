@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/scss/ChangeCopies.scss';
 
-const ChangeCopies = ({ copies, onAddedToCart, bookId, onDeletedFromCart }) => {
+const ChangeCopies = ({ copies, bookId, onAddedToCart, onDeletedFromCart }) => {
   return (
     <div className='changeCopies flexWrap'>
       <button onClick={() => onAddedToCart(bookId)}>

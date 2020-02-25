@@ -1,8 +1,5 @@
 import React from 'react';
-import { compose, mapStateToProps, mapDispatchToProps } from '../utils/helpFuncsForRedux';
-import { connect } from 'react-redux';
-import withServices from '../hoc/withServices';
-import componentLogic from '../hoc/componentLogic';
+import withStore from '../utils/helpFuncsForRedux';
 import ChangeCopies from './ChangeCopies';
 import '../styles/scss/CartList.scss';
 
@@ -30,4 +27,4 @@ const CartList = ({ shopingCart: { cartItems }, actions: { onAddedToCart, onDele
   );
 };
 
-export default compose(withServices(), connect(mapStateToProps, mapDispatchToProps))(componentLogic(CartList, 'cartList'));
+export default withStore(CartList);

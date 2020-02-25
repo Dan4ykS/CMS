@@ -1,11 +1,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { compose, mapStateToProps, mapDispatchToProps } from '../utils/helpFuncsForRedux';
-import { connect } from 'react-redux';
-import withServices from '../hoc/withServices';
-import componentLogic from '../hoc/componentLogic';
+import withStore  from '../utils/helpFuncsForRedux';
 import { workWithUserApi } from '../utils/helpFuncsForBrouser';
 import { Link } from 'react-router-dom';
+
 import '../styles/scss/Login.scss';
 
 const LoginPage = ({ userData: { isAuth }, actions: { authorization } }) => {
@@ -46,7 +44,4 @@ const LoginPage = ({ userData: { isAuth }, actions: { authorization } }) => {
   );
 };
 
-export default compose(
-  withServices(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(componentLogic(LoginPage));
+export default withStore(LoginPage);

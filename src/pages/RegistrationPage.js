@@ -1,10 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { compose, mapStateToProps, mapDispatchToProps } from '../utils/helpFuncsForRedux';
-import { connect } from 'react-redux';
-import withServices from '../hoc/withServices';
+import  withStore  from '../utils/helpFuncsForRedux';
 import { workWithUserApi } from '../utils/helpFuncsForBrouser';
-import componentLogic from '../hoc/componentLogic';
+
 
 const RegistrationPage = ({ userData: { isAuth }, actions: { registration } }) => {
   if (isAuth) {
@@ -49,5 +47,5 @@ const RegistrationPage = ({ userData: { isAuth }, actions: { registration } }) =
     </>
   );
 };
-export default compose(withServices(), connect(mapStateToProps, mapDispatchToProps))(componentLogic(RegistrationPage));
+export default withStore(RegistrationPage);
 // onSubmit={(e) => checkUser(e, authorization)}

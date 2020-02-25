@@ -1,8 +1,5 @@
 import React from 'react';
-import componentLogic from '../hoc/componentLogic';
-import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps, compose } from '../utils/helpFuncsForRedux';
-import withServices from '../hoc/withServices';
+import withStore from '../utils/helpFuncsForRedux';
 import '../styles/scss/BlockList.scss';
 
 const BookList = ({ bookList: { books }, actions: { onAddedToCart } }) => {
@@ -31,4 +28,4 @@ const BookList = ({ bookList: { books }, actions: { onAddedToCart } }) => {
   );
 };
 
-export default compose(withServices(), connect(mapStateToProps, mapDispatchToProps))(componentLogic(BookList, 'bookList'));
+export default withStore(BookList, 'bookList');

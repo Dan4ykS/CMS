@@ -18,7 +18,7 @@ const feedbackMouseEnter = () => {
 
 const showScrollTopArrow = () => {
   window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 500) {
+    if (window.pageYOffset > 300) {
       document.querySelectorAll('footer .fas').forEach((el) => {
         el.classList.add('fas_active');
       });

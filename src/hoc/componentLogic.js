@@ -2,7 +2,7 @@ import React from 'react';
 import LoadingIndicator from '../components/LoadingIndicator';
 import ErrorIndicator from '../components/ErrorIndicator';
 
-const componentLogic = (View, type = '') => {
+const componentLogic = (View, type) => {
   return class extends React.Component {
     componentDidMount() {
       if (type === 'bookList') {

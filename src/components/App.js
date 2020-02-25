@@ -9,14 +9,10 @@ import CustomizingPage from '../pages/CustomizingPage';
 import LoginPage from '../pages/LoginPage';
 import Footer from '../components/Footer';
 import RegistrationPage from '../pages/RegistrationPage';
-import { compose, mapStateToProps, mapDispatchToProps } from '../utils/helpFuncsForRedux';
-import componentLogic from '../hoc/componentLogic';
-import { connect } from 'react-redux';
-import withServices from '../hoc/withServices';
+import  withStore  from '../utils/helpFuncsForRedux';
 import { mainItems, topItems, iconsForItems } from '../utils/headerConf';
 
 const App = ({ userData: { userName } }) => {
-  console.log(userName)
   return (
     <>
       <Heder iconsForItems={iconsForItems} topItems={topItems} mainItems={mainItems} />
@@ -36,7 +32,4 @@ const App = ({ userData: { userName } }) => {
   );
 };
 
-export default compose(
-  withServices(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(componentLogic(App));
+export default withStore(App);

@@ -1,6 +1,6 @@
 export default class UsersService {
   _paiBase = 'http://127.0.0.1:8000/api/';
-  requestToApi = async (url,data) => {
+  requestToApi = async (url, data) => {
     const request = await fetch(`${this._paiBase}${url}`, {
       method: 'POST',
       headers: {

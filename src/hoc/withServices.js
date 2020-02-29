@@ -1,5 +1,5 @@
 import React from 'react';
-import {ServicesConsumer} from '../components/Context';
+import { ServicesConsumer } from '../components/Context';
 
 const withServices = () => (Component) => {
   return (props) => {

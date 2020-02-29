@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createItems } from '../utils/helpFuncsForCreateReactElem';
-import { headerFixMenu } from '../utils/helpFuncsForBrouser'
+import { headerFixMenu } from '../utils/helpFuncsForBrouser';
 import '../styles/scss/Header.scss';
 
 const Heder = ({ mainItems: itemsMain, topItems: itemsTop, iconsForItems }) => {
@@ -9,7 +9,7 @@ const Heder = ({ mainItems: itemsMain, topItems: itemsTop, iconsForItems }) => {
   const mainItems = createItems(itemsMain, 'header__item header__main_item');
   const topItems = createItems(itemsTop, 'header__item header__top_item', iconsForItems);
   return (
-    <div className='header'>
+    <header className='header'>
       <nav>
         <div className='header__top'>
           <div className='container'>
@@ -22,7 +22,7 @@ const Heder = ({ mainItems: itemsMain, topItems: itemsTop, iconsForItems }) => {
           </div>
         </div>
       </nav>
-    </div>
+    </header>
   );
 };
 

@@ -6,7 +6,7 @@ const createElementWithIcon = (icon, item, className) => {
   const { className: icoclassName } = icon;
   const { name, value } = item;
   return (
-    <div className='flexWrap' key={Math.random()}>
+    <div className='flexWrap test' key={Math.random()}>
       <Link key={Math.random()} to={name}>
         <i className={icoclassName} key={Math.random()}></i>
       </Link>

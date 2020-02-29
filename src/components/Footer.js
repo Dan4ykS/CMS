@@ -6,7 +6,7 @@ import { feedbackMouseEnter, feedbackMouseLeave, showScrollTopArrow, redirectToL
 const Footer = () => {
   showScrollTopArrow();
   return (
-    <footer>
+    <footer className='footer'>
       <Link className='upArrow' to='header' smooth={true}>
         <i className='fas fa-chevron-up'></i>
       </Link>

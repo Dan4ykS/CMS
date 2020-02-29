@@ -1,9 +1,8 @@
 import React from 'react';
+import withStore from '../utils/helpFuncsForRedux';
 import { Redirect } from 'react-router-dom';
-import withStore  from '../utils/helpFuncsForRedux';
 import { workWithUserApi } from '../utils/helpFuncsForBrouser';
 import { Link } from 'react-router-dom';
-
 import '../styles/scss/Login.scss';
 
 const LoginPage = ({ userData: { isAuth }, actions: { authorization } }) => {

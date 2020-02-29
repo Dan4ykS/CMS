@@ -1,4 +1,5 @@
-@import "./reuse.scss";
+@import "./main.scss";
+
 .active {
   position: fixed;
   width: 100%;
@@ -6,14 +7,33 @@
   left: 0;
   margin-top: 0 !important;
 }
+
+@keyframes swap {
+  from {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+
+  30% {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    opacity: 0;
+  }
+}
 .header {
   &_active {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  margin-top: 0 !important;
-}
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin-top: 0 !important;
+  }
   ul {
     margin: 0;
     padding: 0;
@@ -42,6 +62,7 @@
     }
     &_item {
       margin-left: 10px;
+      animation-name: swap;
     }
   }
   &__main {

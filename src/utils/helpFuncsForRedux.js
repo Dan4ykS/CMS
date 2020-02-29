@@ -1,7 +1,8 @@
-import { fetchBooks, onAddedToCart, onDeletedFromCart, authorization, registration } from '../actions/actions';
 import componentLogic from '../hoc/componentLogic';
-import { connect } from 'react-redux';
 import withServices from '../hoc/withServices';
+import { fetchBooks, onAddedToCart, onDeletedFromCart, authorization, registration } from '../actions/actions';
+import { connect } from 'react-redux';
+
 const compose = (...funcs) => (comp) => {
   return funcs.reduceRight((wrapped, func) => func(wrapped), comp);
 };

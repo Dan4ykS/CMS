@@ -1,7 +1,8 @@
-@import "./reuse.scss";
+@import "./main.scss";
 
 .cartItem {
   margin-top: 20px;
+  margin: 20px;
   &__img{
     max-width: 100px;
   }

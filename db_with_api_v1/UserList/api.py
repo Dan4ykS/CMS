@@ -17,8 +17,7 @@ class GetUsers(APIView):
 class CreateUser(APIView):
 
     def post(self, request):
-        serializer = UsersSerializer(data=request.data)
-        # print(serializer.data.get('password'))
+        serializer = UsersSerializer(data=request.data)        
         if serializer.is_valid():
             password = serializer.validated_data.get('password')
             h_password = hashlib.sha1(str.encode(password))
@@ -38,12 +37,29 @@ class AuthUser(APIView):
         try:
             user = Users.objects.get(userName=userName, password=h_password)
         except Users.DoesNotExist:
-    # сервер принял запрос, но отказывается что-то делать (вроде так, на всякий случай, если надо, то гугл)
+    # сервер принял запрос, но отказывается что-то делать
             return Response(status=status.HTTP_403_FORBIDDEN)
         else:
     # все нормально
             return Response(status=status.HTTP_200_OK)
         
+
+class GetAllCommodities(APIView):
+
+    def get(self, request):
+        model = Commodity.objects.all()
+        serializer = CommoditySerializer(model, many=True)
+        return Response(serializer.data)
+
+
+class AddCommodity(APIView):
+
+    def post(self, request):
+        serializer = CommoditySerializer(data=request.data)        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
 

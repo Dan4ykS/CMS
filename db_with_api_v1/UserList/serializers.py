@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from UserList.models import Users, Commodity, Bascet, AvailableCommodities
+from UserList.models import Users, Commodity, AvailableCommoditiesInStore, UserBascet
 
 class UsersSerializer(serializers.ModelSerializer):
 
@@ -22,15 +22,17 @@ class CommoditySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class BascetSerializer(serializers.ModelSerializer):
+class AvailableCommoditiesInStoreSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Bascet
+        model = AvailableCommoditiesInStore
         fields = '__all__'
 
 
-class AvailableCommodities(serializers.ModelSerializer):
+class UserBascetSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = AvailableCommodities
+        model = UserBascet
         fields = '__all__'
+
+

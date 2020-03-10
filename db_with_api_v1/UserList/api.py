@@ -62,6 +62,38 @@ class AddCommodity(APIView):
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
+class GetAvailableCommoditiesInStore(APIView):
+
+    def get(self, request):
+        model = AvailableCommoditiesInStore.objects.all()
+        serializer = AvailableCommoditiesInStoreSerializer(model, many=True)
+        return Response(serializer.data)
 
 
-    
+class AddAvailableCommoditiesInStore(APIView):
+
+    def post(self, request):
+        serializer = AvailableCommoditiesInStoreSerializer(data=request.data)        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+class GetUserBascets(APIView):
+
+    def get(self, request):
+        model = UserBascet.objects.all()
+        serializer = UserBascetSerializer(model, many=True)
+        return Response(serializer.data)
+
+
+class AddUserBascet(APIView):
+
+    def post(self, request):
+        serializer = UserBascetSerializer(data=request.data)        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        

@@ -22,15 +22,18 @@ from UserList.api import AddAvailableCommoditiesInStore, GetUserBascets, AddComm
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/get_user_list/$', GetUsers.as_view(), name='user_list'),
-    url(r'^api/create_new_user/$', CreateUser.as_view(), name='user_list'),
-    url(r'^api/auth_user/$', AuthUser.as_view(), name='user_list'),
-    url(r'^api/get_commodities_list/$', GetAllCommodities.as_view(), name='user_list'),
-    url(r'^api/add_commodity/$', AddCommodity.as_view(), name='user_list'),
-    url(r'^api/get_list_of_av_comms/$', GetAvailableCommoditiesInStore.as_view(), name='user_list'),
-    url(r'^api/add_av_comms/$', AddAvailableCommoditiesInStore.as_view(), name='user_list'),
-    url(r'^api/get_users_bascets/$', GetUserBascets.as_view(), name='user_list'),
-    url(r'^api/add_commodity_in_bascet/$', AddCommodityInBascet.as_view(), name='user_list'),
-    url(r'^api/reduce_commodity_in_bascet/$', ReduceCommodityInBascet.as_view(), name='user_list')
+    url(r'^api/get_user_list/$', GetUsers.as_view(), name='user_list'), # список всех пользователей вывести
+    url(r'^api/create_new_user/$', CreateUser.as_view(), name='user_list'), # создать пользователя 
+    url(r'^api/auth_user/$', AuthUser.as_view(), name='user_list'), # проверка авторизации
+    url(r'^api/get_commodities_list/$', GetAllCommodities.as_view(), name='user_list'), # список всех товаров
+    # если необходимо, можно создать поиск нужного товара    
+    url(r'^api/add_commodity/$', AddCommodity.as_view(), name='user_list'), # добавить товар
+    url(r'^api/get_list_of_av_comms/$', GetAvailableCommoditiesInStore.as_view(), name='user_list'), #список с id товара и количеством на складе    
+    url(r'^api/add_av_comms/$', AddAvailableCommoditiesInStore.as_view(), name='user_list'), #добавить товар и его кол-во на склад (изменять имеющийся пока нельзя)
+    url(r'^api/get_user_bascets/$', GetUserBascets.as_view(), name='user_list'), # поиск корзины пользователя по логину
+    url(r'^api/add_commodity_in_bascet/$', AddCommodityInBascet.as_view(), name='user_list'), # добавление товара в корзину (нужны логин и id товара)
+    url(r'^api/reduce_commodity_in_bascet/$', ReduceCommodityInBascet.as_view(), name='user_list') # убрать один товар из корзины
+    # если два одинаковых товара, то останется только один
+    # если был один товар, то он удалится вообще.
     
 ]

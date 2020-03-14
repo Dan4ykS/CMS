@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls import url
 
 from UserList.api import GetUsers, CreateUser, AuthUser, GetAllCommodities, AddCommodity, GetAvailableCommoditiesInStore
-from UserList.api import AddAvailableCommoditiesInStore, GetUserBascets, AddUserBascet
+from UserList.api import AddAvailableCommoditiesInStore, GetUserBascets, AddCommodityInBascet, ReduceCommodityInBascet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^api/get_list_of_av_comms/$', GetAvailableCommoditiesInStore.as_view(), name='user_list'),
     url(r'^api/add_av_comms/$', AddAvailableCommoditiesInStore.as_view(), name='user_list'),
     url(r'^api/get_users_bascets/$', GetUserBascets.as_view(), name='user_list'),
-    url(r'^api/add_user_bascet/$', AddUserBascet.as_view(), name='user_list')
+    url(r'^api/add_commodity_in_bascet/$', AddCommodityInBascet.as_view(), name='user_list'),
+    url(r'^api/reduce_commodity_in_bascet/$', ReduceCommodityInBascet.as_view(), name='user_list')
     
 ]

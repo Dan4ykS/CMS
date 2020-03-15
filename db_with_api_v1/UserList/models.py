@@ -5,7 +5,7 @@ class Users(models.Model):
     userName = models.CharField(max_length=32, null=False, primary_key=True)
     email = models.CharField(max_length=64, unique=True, null=False)
     password = models.CharField(max_length=64, null=False)
-    eIdentifier = models.TextField(null=True, unique = True)
+    eIdentifier = models.TextField(null=True)
     buscetPrice = models.IntegerField(null=False, default=0)
 
 
@@ -15,6 +15,8 @@ class Commodity(models.Model):
     commodityPrice = models.IntegerField(null=False)
     commodityDescriptionShort = models.TextField(null=True)
     commodityDescriptionFull = models.TextField(null=True)
+    commodityImage = models.ImageField(null=True, blank=True)
+
 
 
 class AvailableCommoditiesInStore(models.Model):

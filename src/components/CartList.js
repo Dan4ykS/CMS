@@ -1,5 +1,4 @@
 import React from 'react';
-import withStore from '../utils/helpFuncsForRedux';
 import ChangeCopies from './ChangeCopies';
 import '../styles/scss/CartList.scss';
 
@@ -27,4 +26,4 @@ const CartList = ({ shopingCart: { cartItems }, actions: { onAddedToCart, onDele
   );
 };
 
-export default withStore(CartList);
+export default CartList;

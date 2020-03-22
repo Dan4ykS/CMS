@@ -1,5 +1,4 @@
 import React from 'react';
-import withStore from '../utils/helpFuncsForRedux';
 import '../styles/scss/BlockList.scss';
 
 const BookList = ({ bookList: { books }, actions: { onAddedToCart } }) => {
@@ -28,4 +27,4 @@ const BookList = ({ bookList: { books }, actions: { onAddedToCart } }) => {
   );
 };
 
-export default withStore(BookList, 'bookList');
+export default BookList;

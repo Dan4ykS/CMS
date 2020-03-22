@@ -1,13 +1,22 @@
 import React from 'react';
 import BookList from '../components/BookList';
+import withStore from '../utils/helpFuncsForRedux';
+import LoadingDataLogic from '../logicComponents/LoadingData';
 
-const ProductPage = () => {
+const ProductPage = ({ bookList, actions }) => {
+  const configData = {
+    loading: bookList.loading,
+    error: bookList.error,
+    loadingData: actions.fetchBooks,
+  };
   return (
     <>
       <h2>Товары</h2>
-      <BookList />
+      <LoadingDataLogic configData={configData}>
+        <BookList bookList={bookList} actions={actions} />
+      </LoadingDataLogic>
     </>
   );
 };
 
-export default ProductPage;
+export default withStore(ProductPage);

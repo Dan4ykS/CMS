@@ -4,7 +4,7 @@
 
 * {
   font-family: "Roboto", sans-serif;
-  cursor: default;
+  // cursor: default;
   user-select: none;
   img {
     pointer-events: none;
@@ -15,7 +15,7 @@
 }
 
 body {
-  background: url("../../img/bg.jpg") center no-repeat fixed;
+  background: url("../../img/mainBg.jpg") center/cover no-repeat fixed;
 }
 
 h1,

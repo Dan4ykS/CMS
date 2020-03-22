@@ -1,16 +1,16 @@
 import React from 'react';
 import '../styles/scss/Footer.scss';
 import { Link } from 'react-scroll';
-import { feedbackMouseEnter, feedbackMouseLeave, showScrollTopArrow, redirectToLink } from '../utils/helpFuncsForBrouser';
+import { feedbackMouseEnter, feedbackMouseLeave, showHidenElements, redirectToLink } from '../utils/helpFuncsForBrouser';
 
 const Footer = () => {
-  showScrollTopArrow();
+  showHidenElements();
   return (
     <footer className='footer'>
       <Link className='upArrow' to='header' smooth={true}>
         <i className='fas fa-chevron-up'></i>
       </Link>
-      <div onMouseLeave={() => feedbackMouseLeave()} className='feedback'>
+      <div onMouseLeave={() => feedbackMouseLeave()} className='feedback .hidenElem'>
         <div onMouseEnter={() => feedbackMouseEnter()} className='mainIcon'>
           <i className='fas fa-phone'></i>
         </div>

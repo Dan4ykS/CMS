@@ -16,8 +16,11 @@ const feedbackMouseEnter = () => {
   });
 };
 
-const showScrollTopArrow = () => {
+const showHidenElements = () => {
   window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 298) {
+      document.querySelector('footer .feedback').classList.remove('hidenElem');
+    }
     if (window.pageYOffset > 300) {
       document.querySelectorAll('footer .fas').forEach((el) => {
         el.classList.add('fas_active');
@@ -26,6 +29,7 @@ const showScrollTopArrow = () => {
       document.querySelectorAll('footer .fas').forEach((el) => {
         el.classList.remove('fas_active');
       });
+      document.querySelector('footer .feedback').classList.add('hidenElem');
     }
   });
 };
@@ -51,17 +55,38 @@ const redirectToLink = (link) => {
   window.open(link);
 };
 
-const workWithUserApi = (event, func, selector) => {
-  event.preventDefault();
+const workWithUserApi = (e, func, selector) => {
+  e.preventDefault();
   let data = {};
   const inputs = document.querySelectorAll(`${selector} .form-control`);
   inputs.forEach((el) => {
     data[el.name] = el.value;
   });
-  func(data);
+  func(data, inputs);
+  const mode = e.target.classList.value === 'registrationForm' ? false : true;
+  clearInputs(inputs, mode);
+};
+
+const clearInputs = (inputs, mode) => {
   inputs.forEach((el) => {
-    el.value = '';
+    if (mode) {
+      el.value = '';
+    }
+    el.addEventListener('focus', () => {
+      inputs.forEach((el) => el.classList.remove('is-invalid'));
+    });
   });
 };
 
-export { feedbackMouseLeave, feedbackMouseEnter, showScrollTopArrow, headerFixMenu, scrollToElem, redirectToLink, workWithUserApi };
+export const isInvalid = (inputs) => {
+  inputs.forEach((el) => el.classList.add('is-invalid'));
+};
+
+const updateTopHeaderMenu = (userName, menu) => {
+  if (userName !== null) {
+    const index = menu.findIndex((el) => el.value === 'Вход');
+    menu[index] = { name: '/MyAccount/', value: userName };
+  }
+};
+
+export { feedbackMouseLeave, feedbackMouseEnter, showHidenElements, headerFixMenu, scrollToElem, redirectToLink, workWithUserApi, updateTopHeaderMenu };

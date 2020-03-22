@@ -1,11 +1,9 @@
-import componentLogic from '../hoc/componentLogic';
 import withServices from '../hoc/withServices';
-import { fetchBooks, onAddedToCart, onDeletedFromCart, authorization, registration } from '../actions/actions';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-
-const compose = (...funcs) => (comp) => {
-  return funcs.reduceRight((wrapped, func) => func(wrapped), comp);
-};
+import { fetchBooks } from '../actions/bookList';
+import { onAddedToCart, onDeletedFromCart } from '../actions/shopingCart';
+import { authorization, registration } from '../actions/userData';
 
 const mapStateToProps = ({ bookList, shopingCart, userData }) => {
   return { bookList, shopingCart, userData };
@@ -22,6 +20,5 @@ const mapDispatchToProps = (dispatch, { services }) => {
   return { actions };
 };
 
-const withStore = (Component, type = '') => compose(withServices(), connect(mapStateToProps, mapDispatchToProps))(componentLogic(Component, type));
-
+const withStore = (Component) => compose(withServices(), connect(mapStateToProps, mapDispatchToProps))(Component);
 export default withStore;

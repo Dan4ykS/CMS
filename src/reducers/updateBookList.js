@@ -6,7 +6,7 @@ const updateBookList = (state, action) => {
       error: null,
     };
   }
-
+  
   switch (action.type) {
     case 'FETCH_BOOKS_REQUEST':
       return {
@@ -25,6 +25,12 @@ const updateBookList = (state, action) => {
         books: [],
         error: action.payload,
         loading: false,
+      };
+    case 'DELETE_ERROR_INDICATOR':
+      return {
+        books: [],
+        loading: true,
+        error: null,
       };
     default:
       return state.bookList;

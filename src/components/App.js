@@ -12,12 +12,10 @@ import RegistrationPage from '../pages/RegistrationPage';
 import withStore from '../utils/helpFuncsForRedux';
 import { mainItems, topItems, iconsForItems } from '../utils/headerConf';
 import { Route, Switch } from 'react-router-dom';
+import { updateTopHeaderMenu } from '../utils/helpFuncsForBrouser';
 
 const App = ({ userData: { userName } }) => {
-  if (userName !== null) {
-    const index = topItems.findIndex((el) => el.value === 'Вход');
-    topItems[index] = { name: '/MyAccount/', value: userName };
-  }
+  updateTopHeaderMenu(userName, topItems);
   return (
     <>
       <Heder iconsForItems={iconsForItems} topItems={topItems} mainItems={mainItems} />

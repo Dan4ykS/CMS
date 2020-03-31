@@ -11,13 +11,18 @@ export default class UsersService {
     if (!request.ok) {
       throw new Error(`Ошибка ${request.status}`);
     }
+    return await request
   };
 
   createNewUser = async (data) => {
-    await this.requestToApi('create_new_user/', data);
+    return await this.requestToApi('createUser/', data);
   };
 
   authUser = async (data) => {
-    await this.requestToApi('auth_user/', data);
+    return await this.requestToApi('authUser/', data);
   };
+
+  getUserById = async (id) => { 
+    return await this.requestToApi('getUser/', id)
+  }
 }

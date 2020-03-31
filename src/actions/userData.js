@@ -1,32 +1,52 @@
 import { isInvalid } from '../utils/helpFuncsForBrouser';
 
-const userLogin = (userName) => {
+const userLogin = (userName, token) => {
   return {
     type: 'USER_LOGIN',
-    payload: userName,
+    payload: { userName, token },
   };
 };
 
-const createNewUser = (userName) => {
+const createUser = (userName, token) => {
   return {
     type: 'CREATE_NEW_USER',
-    payload: userName,
+    payload: { userName, token },
   };
 };
 
+const userLogout = () => {
+  return {
+    type: 'USER_LOGOUT',
+  };
+};
 
-const authorization = (dispatch, { usersService }) => (data, form) => {
+export const authorization = (dispatch, { usersService }) => (data, form) => {
   usersService
     .authUser(data)
-    .then(() => dispatch(userLogin(data.userName)))
-    .catch(() => isInvalid(form));
+    .then((response) => response.json())
+    .then((respData) => {
+      dispatch(userLogin(data.userName, respData.token));
+      localStorage.setItem('userData', JSON.stringify(respData));
+    })
+    .catch((err) => console.log(err));
 };
 
-const registration = (dispatch, { usersService }) => (data, form) => {
+export const registration = (dispatch, { usersService }) => (data, form) => {
   usersService
     .createNewUser(data)
-    .then(() => dispatch(createNewUser(data.userName)))
-    .catch(() => isInvalid(form));
+    .then((response) => response.json())
+    .then((respData) => {
+      dispatch(createUser(data.userName, respData.token));
+      localStorage.setItem('userData', JSON.stringify(respData));
+    })
+    .catch((err) => console.log(err));
 };
 
-export { authorization, registration };
+export const isLogin = (dispatch) => (userName, token) => {
+  dispatch(userLogin(userName, token));
+};
+
+export const isLogout = (dispatch) => () => {
+  dispatch(userLogout());
+  localStorage.removeItem('userData');
+};

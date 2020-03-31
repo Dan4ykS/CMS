@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AccountPage from '../pages/AccountPage';
 import ProductPage from '../pages/ProductPage';
 import CartPage from '../pages/CartPage';
@@ -14,8 +14,14 @@ import { mainItems, topItems, iconsForItems } from '../utils/headerConf';
 import { Route, Switch } from 'react-router-dom';
 import { updateTopHeaderMenu } from '../utils/helpFuncsForBrouser';
 
-const App = ({ userData: { userName } }) => {
-  updateTopHeaderMenu(userName, topItems);
+const App = ({ userData, actions: { isLogin } }) => {
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem('userData'));
+    if (token) {
+      isLogin(token.userName, token.token);
+    }
+  }, [isLogin]);
+  updateTopHeaderMenu(userData.userName, topItems);
   return (
     <>
       <Heder iconsForItems={iconsForItems} topItems={topItems} mainItems={mainItems} />

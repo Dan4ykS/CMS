@@ -18,12 +18,10 @@ const fetchBooksFailure = (error) => {
   };
 };
 
-const fetchBooks = (dispatch, { bookstoreService }) => () => {
+export const fetchBooks = (dispatch, { bookstoreService }) => () => {
   dispatch(fetchBooksRequest());
   bookstoreService
     .getBooks()
     .then((data) => dispatch(fetchBooksSuccuess(data)))
     .catch((error) => dispatch(fetchBooksFailure(error)));
 };
-
-export { fetchBooks };

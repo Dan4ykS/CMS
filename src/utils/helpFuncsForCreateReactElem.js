@@ -30,11 +30,9 @@ const createElementWithOutIcon = (item, className, index) => {
   );
 };
 
-const createItems = (items, className, iconsForItems = []) => {
+export const createItems = (items, className, iconsForItems = []) => {
   return items.map((elem, index) => {
     const item = iconsForItems.length === 0 ? createElementWithOutIcon(elem, className, index) : createElementWithIcon(iconsForItems[index], elem, className);
     return <React.Fragment key={Math.random()}>{item}</React.Fragment>;
   });
 };
-
-export { createItems };

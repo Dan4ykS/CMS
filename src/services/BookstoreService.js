@@ -1,4 +1,11 @@
+// import axios from 'axios';
+
 export default class BookStoreService {
+  _paiBase = 'http://127.0.0.1:8000/api/';
+
+  // requestToApi = async (url, data) => {
+  //   cosnst
+  //  };
   bookList = [
     {
       id: 1,

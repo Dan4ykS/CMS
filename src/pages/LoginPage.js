@@ -4,6 +4,8 @@ import '../styles/scss/Login.scss';
 import { Redirect } from 'react-router-dom';
 import { workWithUserApi } from '../utils/helpFuncsForBrouser';
 import { Link } from 'react-router-dom';
+import { Grid } from '@material-ui/core';
+import MaterialUiRegistrationForm from '../components/MaterialUiForm';
 
 const LoginPage = ({ userData: { isAuth }, actions: { authorization } }) => {
   if (isAuth) {
@@ -18,26 +20,14 @@ const LoginPage = ({ userData: { isAuth }, actions: { authorization } }) => {
             <div className='form-group row'>
               <label className='col-sm-2 col-form-label'>Логин:</label>
               <div className='col-sm-10'>
-                <input
-                  name='userName'
-                  type='text'
-                  className='form-control'
-                  placeholder='Введите ваш логин'
-                  required
-                />
+                <input name='userName' type='text' className='form-control' placeholder='Введите ваш логин' required />
                 <div className='invalid-feedback'>Неверный логин</div>
               </div>
             </div>
             <div className='form-group row'>
               <label className='col-sm-2 col-form-label'>Пароль:</label>
               <div className='col-sm-10'>
-                <input
-                  name='password'
-                  type='password'
-                  className='form-control'
-                  placeholder='Введите ваш пароль'
-                  required
-                />
+                <input name='password' type='password' className='form-control' placeholder='Введите ваш пароль' required />
                 <div className='invalid-feedback'>Неверный пароль</div>
               </div>
             </div>
@@ -51,9 +41,9 @@ const LoginPage = ({ userData: { isAuth }, actions: { authorization } }) => {
             </div>
           </form>
         </div>
-        <div className='col-lg-6'>
-        </div>
+        <div className='col-lg-6'></div>
       </div>
+      ;
     </>
   );
 };

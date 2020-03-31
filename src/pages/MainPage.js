@@ -1,11 +1,9 @@
 import React from 'react';
-import MaterialUiForm from '../components/MaterialUiForm';
 
 const MainPage = () => {
   return (
     <>
       <h2>Главная страница! </h2>
-      <MaterialUiForm />
       <button
         className='btn-warning'
         onClick={() => {

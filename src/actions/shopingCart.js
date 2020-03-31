@@ -12,12 +12,10 @@ const bookDeletedFromCart = (bookId) => {
   };
 };
 
-const onAddedToCart = (dispatch) => (id) => {
+export const onAddedToCart = (dispatch) => (id) => {
   dispatch(bookAddToCart(id));
 };
 
-const onDeletedFromCart = (dispatch) => (id) => {
+export const onDeletedFromCart = (dispatch) => (id) => {
   dispatch(bookDeletedFromCart(id));
 };
-
-export { onAddedToCart, onDeletedFromCart };
